@@ -108,12 +108,16 @@ Employee Details</h3>
                             <tbody>
                                 <c:forEach var="tempEmp" items="${BOOKS_LIST}">
 <tr>
-                                        <td>${tempEmp.bookName }</td>
-                                        <td>${tempEmp.bookDesc }</td>
-                                        <td>${tempEmp.authName }</td>
-                                        <td>${tempEmp.cat}</td>
-                                        <td><a href="editbook.jsp?id=${tempEmp.id }">Edit</a> 
-                                            <a href="DeleteBookServlet?id=${tempEmp.id}">Delete</a></td>
+                                        <td>${tempEmp.empId }</td>
+                                        <td>${tempEmp.firstName }</td>
+                                        <td>${tempEmp.lastName }</td>
+                                        <td>${tempEmp.address}</td>
+                                        <td>${tempEmp.state}</td>
+                                        <td>${tempEmp.country}</td>
+                                        <td>${tempEmp.zipCode}</td>
+                                        <td>${tempEmp.dept}</td>
+                                        <td><a href="editbook.jsp?id=${tempEmp.empId }">Edit</a> 
+                                            <a href="DeleteBookServlet?id=${tempEmp.empId}">Delete</a></td>
                                     </tr>
 </c:forEach>
                             </tbody>

@@ -25,18 +25,19 @@ public class EmpDao {
         boolean test = false;
         
         try{
-            /*String query =  "insert into employee.empdetails (1,empFN,empLN,empAddr,empState,empCountry,empZipCode,empDpt) values(?,?,?,?,?,?,?)";
+            String query =  "insert into employee.empdetails (eid,empFN,empLN,empAddr,empState,empCountry,empZipCode,empDpt) values(?,?,?,?,?,?,?,?)";
             PreparedStatement pst = this.con.prepareStatement(query);
-            pst.setString(1, emp.getFirstName());
-            pst.setString(2, emp.getLastName());
-            pst.setString(3, emp.getAddress());
-            pst.setString(4, emp.getState());
-            pst.setString(5, emp.getCountry());
-            pst.setString(6, emp.getZipCode());
-            pst.setString(7, emp.getDept());            
-            pst.executeUpdate();*/
-            Statement stmt=con.createStatement();  
-            stmt.executeUpdate("insert into employee.empdetails values(3,'as','czx','ds','asd','cxzc','cx','fd')");  
+            pst.setInt(1, 7);
+            pst.setString(2, emp.getFirstName());
+            pst.setString(3, emp.getLastName());
+            pst.setString(4, emp.getAddress());
+            pst.setString(5, emp.getState());
+            pst.setString(6, emp.getCountry());
+            pst.setString(7, emp.getZipCode());
+            pst.setString(8, emp.getDept());            
+            pst.executeUpdate();
+            //Statement stmt=con.createStatement();  
+            //stmt.executeUpdate("insert into employee.empdetails values(3,'as','czx','ds','asd','cxzc','cx','fd')");  
             //String query =  "insert into employee.empdetails (1,"asd","czx","ds","asd","cxzc","cx","fd")";
             test= true;
 
@@ -52,7 +53,7 @@ public class EmpDao {
         
         try{
             
-            String query = "select * from employeedetails";
+            String query = "select * from employee.empdetails";
             PreparedStatement pt = this.con.prepareStatement(query);
             ResultSet rs = pt.executeQuery();
             
