@@ -36,7 +36,7 @@ public class EmpDao {
             pst.setString(7, emp.getDept());            
             pst.executeUpdate();*/
             Statement stmt=con.createStatement();  
-            stmt.executeQuery("insert into employee.empdetails values(2,'as','czx','ds','asd','cxzc','cx','fd')");  
+            stmt.executeUpdate("insert into employee.empdetails values(3,'as','czx','ds','asd','cxzc','cx','fd')");  
             //String query =  "insert into employee.empdetails (1,"asd","czx","ds","asd","cxzc","cx","fd")";
             test= true;
 
