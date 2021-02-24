@@ -23,11 +23,12 @@ public class EmpDao {
     //add Employee information to database
     public boolean addBook(Employee emp){
         boolean test = false;
-        
-        try{
+        //String query =  "insert into books (bName,bDesc,aName,cat) values(?,?,?,?)";
+        int empid = getLastRecord();
+        try{ 
             String query =  "insert into employee.empdetails (eid,empFN,empLN,empAddr,empState,empCountry,empZipCode,empDpt) values(?,?,?,?,?,?,?,?)";
             PreparedStatement pst = this.con.prepareStatement(query);
-            pst.setInt(1, 7);
+            pst.setInt(1, empid + 1);
             pst.setString(2, emp.getFirstName());
             pst.setString(3, emp.getLastName());
             pst.setString(4, emp.getAddress());
@@ -79,10 +80,10 @@ public class EmpDao {
     
     
 //    eidt emp information
-    public void editBookInfo(Employee emp){
-        
+    public boolean editEmployeeInfo(Employee emp){
+        boolean test = false;
         try{
-            String query = "update empdtails set empFN=?, empLN=?, empAddr=?, empState=?, empCountry=?, empZipCode =?, empDpt=? where eid=?";
+            String query = "update employee.empdetails set empFN=?, empLN=?, empAddr=?, empState=?, empCountry=?, empZipCode =?, empDpt=? where eid=?";
             PreparedStatement pt = this.con.prepareStatement(query);
             pt.setString(1, emp.getFirstName());
             pt.setString(2, emp.getLastName());
@@ -94,9 +95,11 @@ public class EmpDao {
             pt.setInt(8, emp.getEmpId());
             
             pt.executeUpdate();
+            test=true;
         }catch(Exception ex){
             ex.printStackTrace();;
         }
+        return test;
         
         
     }
@@ -106,7 +109,7 @@ public class EmpDao {
         Employee bk = null;
         
         try{
-            String query = "select * from employeedetails where eid=? ";
+            String query = "select * from employee.empdetails where eid=? ";
             
             PreparedStatement pt = this.con.prepareStatement(query);
             pt.setInt(1, id);
@@ -136,7 +139,7 @@ public class EmpDao {
     public void deleteBook(int id){
         try{
             
-           String query= "delete from employeedetails where eid=?";
+           String query= "delete from employee.empdetails where eid=?";
            PreparedStatement pt = this.con.prepareStatement(query);
            pt.setInt(1, id);
            pt.execute();
@@ -144,5 +147,26 @@ public class EmpDao {
         }catch(Exception ex){
             ex.printStackTrace();;
         }
+    }
+    
+    public int getLastRecord()
+    {
+        int empid = -1;
+        try {
+                
+                String query = "SELECT * FROM employee.empdetails ORDER BY eid DESC LIMIT 1";
+            
+                PreparedStatement pt = this.con.prepareStatement(query);
+
+                ResultSet rs= pt.executeQuery();
+         
+         
+                if (rs.next()) {
+                    empid = rs.getInt("eid");
+                }
+        } catch (Exception e) {
+         e.printStackTrace();
+        }
+        return empid;    
     }
 }

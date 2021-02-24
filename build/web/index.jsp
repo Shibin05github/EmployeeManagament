@@ -38,7 +38,7 @@
     <body>
         <div  class="container-fluid">
             <nav class="navbar navbar-light">
-                <a class="navbar-brand">Book Store</a>
+                <a class="navbar-brand">Employee Management</a>
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -96,6 +96,7 @@ Employee Details</h3>
 <table class="table">
                             <thead class="bg-light">
 <tr>
+                                    <th scope="col">Employee ID</th>
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Address</th>
@@ -116,8 +117,8 @@ Employee Details</h3>
                                         <td>${tempEmp.country}</td>
                                         <td>${tempEmp.zipCode}</td>
                                         <td>${tempEmp.dept}</td>
-                                        <td><a href="editbook.jsp?id=${tempEmp.empId }">Edit</a> 
-                                            <a href="DeleteBookServlet?id=${tempEmp.empId}">Delete</a></td>
+                                        <td><a href="editEmployee.jsp?empId=${tempEmp.empId }">Edit</a> 
+                                            <a href="DeleteEmployeeServlet?empId=${tempEmp.empId}">Delete</a></td>
                                     </tr>
 </c:forEach>
                             </tbody>
